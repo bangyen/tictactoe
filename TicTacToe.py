@@ -35,18 +35,18 @@ def playGame():
         global theBoard
         
         def squares(nums):
-            return (theBoard[str(n)] for n in nums)
+            return (theBoard[n] for n in nums)
         
         conditions = [
-            (1, 2, 3), (1, 5, 9),
-            (1, 4, 7), (2, 5, 8),
-            (3, 6, 9), (4, 5, 6),
-            (7, 8, 9), (3, 5, 7)
+            ('1', '2', '3'), ('1', '5', '9'),
+            ('1', '4', '7'), ('2', '5', '8'),
+            ('3', '6', '9'), ('4', '5', '6'),
+            ('7', '8', '9'), ('3', '5', '7')
         ]
         
         for nums in conditions:
             if squares(nums) in [('X', 'X', 'X'), ('O', 'O', 'O')]:
-                player_num = ('X', 'O').index(theBoard[str(nums[0])]) + 1
+                player_num = ('X', 'O').index(theBoard[nums[0]]) + 1
                 print(f'Player {player_num} wins!')
                 play = False
                 print(printBoard(theBoard))
