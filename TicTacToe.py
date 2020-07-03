@@ -33,86 +33,24 @@ def playGame():
     def gamePlay():
         global play
         global theBoard
-        if theBoard['1'] == ('X') and theBoard['2'] == ('X') and theBoard['3'] == ('X'):
-            print('Player 1 wins!')
-            play = False
-            print(printBoard(theBoard))
-            restart()
-        elif theBoard['1'] == ('X') and theBoard['5'] == ('X') and theBoard['9'] == ('X'):
-            print('Player 1 wins!')
-            play = False
-            print(printBoard(theBoard))
-            restart()
-        elif theBoard['1'] == ('X') and theBoard['4'] == ('X') and theBoard['7'] == ('X'):
-            print('Player 1 wins!')
-            play = False
-            print(printBoard(theBoard))
-            restart()
-        elif theBoard['2'] == ('X') and theBoard['5'] == ('X') and theBoard['8'] == ('X'):
-            print('Player 1 wins!')
-            play = False
-            print(printBoard(theBoard))
-            restart()
-        elif theBoard['3'] == ('X') and theBoard['6'] == ('X') and theBoard['9'] == ('X'):
-            print('Player 1 wins!')
-            play = False
-            print(printBoard(theBoard))
-            restart()
-        elif theBoard['4'] == ('X') and theBoard['5'] == ('X') and theBoard['6'] == ('X'):
-            print('Player 1 wins')
-            play = False
-            print(printBoard(theBoard))
-            restart()
-        elif theBoard['7'] == ('X') and theBoard['8'] == ('X') and theBoard['9'] == ('X'):
-            print('Player 1 wins!')
-            play = False
-            print(printBoard(theBoard))
-            restart()
-        elif theBoard['3'] == ('X') and theBoard['5'] == ('X') and theBoard['7'] == ('X'):
-            print('Player 1 wins!')
-            play = False
-            print(printBoard(theBoard))
-            restart()
-        elif theBoard['1'] == ('O') and theBoard['2'] == ('O') and theBoard['3'] == ('O'):
-            print('Player 2 wins!')
-            play = False
-            print(printBoard(theBoard))
-            restart()
-        elif theBoard['1'] == ('X') and theBoard['5'] == ('X') and theBoard['9'] == ('X'):
-            print('Player 2 wins!')
-            play = False
-            print(printBoard(theBoard))
-            restart()
-        elif theBoard['1'] == ('X') and theBoard['4'] == ('X') and theBoard['7'] == ('X'):
-            print('Player 2 wins!')
-            play = False
-            print(printBoard(theBoard))
-            restart()
-        elif theBoard['2'] == ('X') and theBoard['5'] == ('X') and theBoard['8'] == ('X'):
-            print('Player 2 wins!')
-            play = False
-            print(printBoard(theBoard))
-            restart()
-        elif theBoard['3'] == ('X') and theBoard['6'] == ('X') and theBoard['9'] == ('X'):
-            print('Player 2 wins!')
-            play = False
-            print(printBoard(theBoard))
-            restart()
-        elif theBoard['4'] == ('X') and theBoard['5'] == ('X') and theBoard['6'] == ('X'):
-            print('Player 2 wins!')
-            play = False
-            print(printBoard(theBoard))
-            restart()
-        elif theBoard['7'] == ('X') and theBoard['6'] == ('8') and theBoard['9'] == ('X'):
-            print('Player 2 wins!')
-            play = False
-            print(printBoard(theBoard))
-            restart()
-        elif theBoard['3'] == ('X') and theBoard['5'] == ('X') and theBoard['7'] == ('X'):
-            print('Player 2 wins!')
-            play = False
-            print(printBoard(theBoard))
-            restart()
+        
+        def squares(nums):
+            return (theBoard[str(n)] for n in nums)
+        
+        conditions = [
+            (1, 2, 3), (1, 5, 9),
+            (1, 4, 7), (2, 5, 8),
+            (3, 6, 9), (4, 5, 6),
+            (7, 8, 9), (3, 5, 7)
+        ]
+        
+        for nums in conditions:
+            if squares(nums) in [('X', 'X', 'X'), ('O', 'O', 'O')]:
+                player_num = ('X', 'O').index(theBoard[str(nums[0])]) + 1
+                print(f'Player {player_num} wins!')
+                play = False
+                print(printBoard(theBoard))
+                restart()
 
 
 # This is the function that allows the game to restart
